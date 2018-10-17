@@ -17,5 +17,9 @@
         <footer class='text-center border-top'>
             Rogerio Eduardo Pereira - 16th October 2018
         </footer>
+
+        
+        {!! Html::script('/js/app.js') !!}
+        @yield('scripts')
     </body>
 </html>

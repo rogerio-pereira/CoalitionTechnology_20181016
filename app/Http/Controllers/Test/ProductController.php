@@ -21,10 +21,11 @@ class ProductController extends Controller
     {
         $form = FormBuilder::create(ProductForm::class, [
             'method' => 'POST', 
-            'url' => route('product.store')
+            //'url' => route('product.store')
+            'url' => '#',
         ]);
-
-        $products = array();
+        
+        $products = $this->getProducts();
 
         return view('test.index', compact('form', 'products'));
     }
@@ -49,6 +50,18 @@ class ProductController extends Controller
     {
         $data = $request->all();
 
+        $this->saveFile($data);
+    }
+
+    public function storeAjax(Request $request)
+    {
+        $data = $request->all();
+
+        $this->saveFile($data);
+    }
+
+    public function saveFile($data)
+    {
         $product = new Product($data['name'], $data['stock'], $data['price']);
         
         try {
@@ -57,6 +70,18 @@ class ProductController extends Controller
         } catch (Exception $e) {
             throw $e;
         }
+    }
+
+    public function all()
+    {
+        $products = $this->getProducts();
+        return view('test._table', compact('products'));
+    }
+
+    private function getProducts()
+    {
+        $product = new Product();
+        return $product->all();
     }
 
     /**

@@ -14,7 +14,7 @@ class Product
     private $value;
     private $dateTime;
 
-    public function __construct($name, $qtd, $value)
+    public function __construct($name = null, $qtd = null, $value = null)
     {
         $this->storageFile = storage_path().'/app/products.json';
 
@@ -54,5 +54,18 @@ class Product
             'value' => $this->value,
             'dateTime' => $this->dateTime
         ]);
+    }
+
+    public function all()
+    {
+        $file = file_get_contents($this->storageFile);
+        $file = explode("\n", $file);
+        $json = array();
+
+        foreach ($file as $line) {
+            $json[] = json_decode($line);
+        }
+
+        return $json;
     }
 }

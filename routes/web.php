@@ -12,6 +12,8 @@
 */
 
 Route::get('/', 'Test\\ProductController@index')->name('index');
+Route::post('/product/storeAjax', 'Test\\ProductController@storeAjax');
+Route::get('/product/all', 'Test\\ProductController@all');
 
 Route::group(['namespace' => 'Test',], function() 
 {
