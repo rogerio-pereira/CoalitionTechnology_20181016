@@ -9,7 +9,7 @@ class ProductForm extends Form
     public function buildForm()
     {
         $this->add('name', 
-                'password', 
+                'text', 
                 [
                     'label' => 'Product Name', 
                     'placeholder' => 'Product Name',
@@ -18,7 +18,7 @@ class ProductForm extends Form
                     ]
                 ])
             ->add('stock', 
-                'number', 
+                'text', 
                 [
                     'label' => 'Quantity in stock', 
                     'placeholder' => 'Quantity in stock',
@@ -27,7 +27,7 @@ class ProductForm extends Form
                     ]
                 ])
             ->add('price', 
-                'number', 
+                'text', 
                 [
                     'label' => 'Price', 
                     'placeholder' => 'Price',

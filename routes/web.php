@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', 'Test\\ProductController@index');
+Route::get('/', 'Test\\ProductController@index')->name('index');
 
 Route::group(['namespace' => 'Test',], function() 
 {

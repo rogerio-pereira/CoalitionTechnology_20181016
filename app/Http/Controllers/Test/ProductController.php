@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Test;
 
 use App\Forms\ProductForm;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ProductRequest;
+use App\Models\Product;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Kris\LaravelFormBuilder\Facades\FormBuilder;
 
@@ -42,9 +45,18 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProductRequest $request)
     {
-        //
+        $data = $request->all();
+
+        $product = new Product($data['name'], $data['stock'], $data['price']);
+        
+        try {
+            $product->save();
+            return redirect()->route('index');
+        } catch (Exception $e) {
+            throw $e;
+        }
     }
 
     /**
