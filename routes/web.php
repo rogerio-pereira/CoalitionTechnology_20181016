@@ -11,6 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', 'Test\\TestController@index');
+
+Route::group(['namespace' => 'Test',], function() 
+{
+    Route::resource('product', 'TestController');
 });
