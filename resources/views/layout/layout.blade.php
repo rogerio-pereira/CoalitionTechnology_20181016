@@ -14,7 +14,7 @@
             </div>
         </section>
 
-        <footer class='text-center'>
+        <footer class='text-center border-top'>
             Rogerio Eduardo Pereira - 16th October 2018
         </footer>
     </body>

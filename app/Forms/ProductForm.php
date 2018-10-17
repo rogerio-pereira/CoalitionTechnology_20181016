@@ -38,7 +38,7 @@ class ProductForm extends Form
             ->add('submit', 
                 'submit', 
                 [
-                    'label' => '<i class="fa fa-floppy-o fa-lg" aria-hidden="true"></i> Salvar',
+                    'label' => '<i class="far fa-save"></i> Save',
                     'wrapper' => [
                         'class' => 'form-group col-md-4 col-md-offset-4 text-center'
                     ],

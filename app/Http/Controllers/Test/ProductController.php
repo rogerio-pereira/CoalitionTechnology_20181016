@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Test;
 
-use Illuminate\Http\Request;
+use App\Forms\ProductForm;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use Kris\LaravelFormBuilder\Facades\FormBuilder;
 
-class TestController extends Controller
+class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +16,14 @@ class TestController extends Controller
      */
     public function index()
     {
-        return view('test.index');
+        $form = FormBuilder::create(ProductForm::class, [
+            'method' => 'POST', 
+            'url' => route('product.store')
+        ]);
+
+        $products = array();
+
+        return view('test.index', compact('form', 'products'));
     }
 
     /**
